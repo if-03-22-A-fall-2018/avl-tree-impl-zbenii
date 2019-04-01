@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Recpot: avl_tree.h File Reference</title>
+<title>AVL_Tree: avl_tree.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Recpot
+   <div id="projectname">AVL_Tree
    </div>
   </td>
  </tr>
@@ -79,6 +79,8 @@ Functions</h2></td></tr>
 <tr class="separator:a939c9f4b6ea530d751a20af8ddfb37af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04bf339a7bca70a8194f2e22b02f5e56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avl__tree_8h.html#a04bf339a7bca70a8194f2e22b02f5e56">print_postorder</a> (<a class="el" href="node_8h.html#a9e5c56ea4735844f2f57460193ef44af">Node</a> node)</td></tr>
 <tr class="separator:a04bf339a7bca70a8194f2e22b02f5e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0674b5881cfeb3a7426b5bc4c68d866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="avl__tree_8h.html#ad0674b5881cfeb3a7426b5bc4c68d866">unbalanced_insert</a> (<a class="el" href="node_8h.html#a9e5c56ea4735844f2f57460193ef44af">Node</a> root, int key)</td></tr>
+<tr class="separator:ad0674b5881cfeb3a7426b5bc4c68d866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a6ca32a79e603d7cd067a7120bcc43dd5"></a>
@@ -254,10 +256,46 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad0674b5881cfeb3a7426b5bc4c68d866"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0674b5881cfeb3a7426b5bc4c68d866">&#9670;&nbsp;</a></span>unbalanced_insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void unbalanced_insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="node_8h.html#a9e5c56ea4735844f2f57460193ef44af">Node</a>&#160;</td>
+          <td class="paramname"><em>root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inserts a new node (with the given key) into the binary tree which root has been supplied. You don't have to worry about balance of the tree, just place the node at the correct spot and remember that no duplicate keys are allowed. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">root</td><td>The root node of the binary tree </td></tr>
+    <tr><td class="paramname">key</td><td>The key of the new node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>You don't have to update the height property of the nodes in this function </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 31 2019 15:01:49 for Recpot by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 1 2019 11:33:37 for AVL_Tree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

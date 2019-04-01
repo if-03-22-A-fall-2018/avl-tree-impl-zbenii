@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 	ADD_TEST(left_node);
 	ADD_TEST(right_node);
 	ADD_TEST(get_max);
+	ADD_TEST(no_duplicates);
+	ADD_TEST(unbalanced_insert);
 	ADD_TEST(get_balance);
 	ADD_TEST(rotate_left);
 	ADD_TEST(rotate_right);

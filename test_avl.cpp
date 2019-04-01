@@ -38,7 +38,7 @@ TEST(left_node)
 	Node node1 = create_node(1);
 	Node node2 = create_node(2);
 	set_left(node2, node1);
-	
+
 	Node left_node = get_left(node2);
 	ASSERT_EQUALS(1, get_key(left_node));
 }
@@ -48,12 +48,12 @@ TEST(right_node)
 	Node node1 = create_node(1);
 	Node node2 = create_node(2);
 	set_right(node1, node2);
-	
+
 	Node right_node = get_right(node1);
 	ASSERT_EQUALS(2, get_key(right_node));
 }
 
-// AVL Tree Tests
+// Basic Bin Tree Tests
 TEST(get_max)
 {
 	int smaller = 5;
@@ -62,6 +62,44 @@ TEST(get_max)
 	ASSERT_EQUALS(bigger, max(bigger, smaller));
 }
 
+int count_nodes(Node node, int key);
+TEST(no_duplicates)
+{
+	Node root = create_node(20);
+	unbalanced_insert(root, 10);
+	unbalanced_insert(root, 30);
+	unbalanced_insert(root, 10);
+	unbalanced_insert(root, 30);
+	unbalanced_insert(root, 20);
+	
+	ASSERT_EQUALS(1, count_nodes(root, 10));
+	ASSERT_EQUALS(1, count_nodes(root, 20));
+	ASSERT_EQUALS(1, count_nodes(root, 30));
+}
+
+int check_node(Node node, int key, int height, int left_key, int right_key);
+TEST(unbalanced_insert)
+{
+    Node root = create_node(20);
+    unbalanced_insert(root, 10);
+    unbalanced_insert(root, 30);
+    unbalanced_insert(root, 15);
+    unbalanced_insert(root, 25);
+    unbalanced_insert(root, 35);
+    unbalanced_insert(root, 5);
+    unbalanced_insert(root, 9);
+
+	ASSERT_EQUALS(1, check_node(root, 9, 1, 0, 0));
+	ASSERT_EQUALS(1, check_node(root, 5, 1, 0, 9));
+	ASSERT_EQUALS(1, check_node(root, 15, 1, 0, 0));
+	ASSERT_EQUALS(1, check_node(root, 10, 1, 5, 15));
+	ASSERT_EQUALS(1, check_node(root, 25, 1, 0, 0));
+	ASSERT_EQUALS(1, check_node(root, 35, 1, 0, 0));
+	ASSERT_EQUALS(1, check_node(root, 30, 1, 25, 35));
+	ASSERT_EQUALS(1, check_node(root, 20, 1, 10, 30));
+}
+
+// AVL Tree Tests
 TEST(get_balance)
 {
 	Node left = create_node(1);
@@ -151,23 +189,22 @@ TEST(insert_simple)
 	ASSERT_EQUALS(0, get_balance(root));
 }
 
-int check_node(Node node, int key, int height, int left_key, int right_key);
 TEST(insert_complex)
 {
 	Node root = insert(0, 10);
-    root = insert(root, 20);
-    root = insert(root, 30);
-    root = insert(root, 40);
-    root = insert(root, 50);
-    root = insert(root, 25);
-    root = insert(root, 26);
-    root = insert(root, 27);
-    root = insert(root, 39);
-    root = insert(root, 35);
-    root = insert(root, 10);
-    root = insert(root, 60);
-    root = insert(root, 5);
-    root = insert(root, 1);
+	root = insert(root, 20);
+	root = insert(root, 30);
+	root = insert(root, 40);
+	root = insert(root, 50);
+	root = insert(root, 25);
+	root = insert(root, 26);
+	root = insert(root, 27);
+	root = insert(root, 39);
+	root = insert(root, 35);
+	root = insert(root, 10);
+	root = insert(root, 60);
+	root = insert(root, 5);
+	root = insert(root, 1);
 	root = insert(root, 65);
 
 	ASSERT_EQUALS(30, get_key(root));
@@ -183,30 +220,59 @@ TEST(insert_complex)
 	ASSERT_EQUALS(0, get_balance(root));
 }
 
-int check_node(Node node, int key, int height, int left_key, int right_key){
-	if (node == 0){
+int check_node(Node node, int key, int height, int left_key, int right_key)
+{
+	if (node == 0)
+	{
 		return 0;
 	}
-	if (get_key(node) == key){
-		if (get_height(node) != height){
+	if (get_key(node) == key)
+	{
+		if (get_height(node) != height)
+		{
 			return -1;
 		}
 		Node left_node = get_left(node);
 		Node right_node = get_right(node);
-		if ((left_node == 0 && left_key != 0) || (get_key(left_node) != left_key)){
+		if ((left_node == 0 && left_key != 0) || (get_key(left_node) != left_key))
+		{
 			return -1;
 		}
-		if ((right_node == 0 && right_key != 0) || (get_key(right_node) != right_key)){
+		if ((right_node == 0 && right_key != 0) || (get_key(right_node) != right_key))
+		{
 			return -1;
 		}
 		return 1;
-	} else {
+	}
+	else
+	{
 		int res_l = check_node(get_left(node), key, height, left_key, right_key);
-		if (res_l == 0){
+		if (res_l == 0)
+		{
 			return check_node(get_right(node), key, height, left_key, right_key);
 		}
 		return res_l;
 	}
 }
 
-
+int count_nodes(Node node, int key)
+{
+	int occurances = 0;
+	if (node == 0)
+	{
+		return 0;
+	}
+	if (get_left(node) != 0)
+	{
+		occurances += count_nodes(get_left(node), key);
+	}
+	if (get_right(node) != 0)
+	{
+		occurances += count_nodes(get_right(node), key);
+	}
+	if (get_key(node) == key)
+	{
+		occurances++;
+	}
+	return occurances;
+}

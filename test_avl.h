@@ -10,6 +10,8 @@ TEST(set_height);
 TEST(left_node);
 TEST(right_node);
 TEST(get_max);
+TEST(no_duplicates);
+TEST(unbalanced_insert);
 TEST(get_balance);
 TEST(rotate_left);
 TEST(rotate_right);
