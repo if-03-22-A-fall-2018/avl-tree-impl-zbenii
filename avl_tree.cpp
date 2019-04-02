@@ -58,7 +58,12 @@ Node rotate_left(Node node){
 }
 
 int max (int n1, int n2){
-  return 0;
+  if(n1>n2){
+    return n1;
+  }
+  else{
+    return n2;
+  }
 }
 
 Node rotate_right (Node node){
@@ -66,7 +71,7 @@ Node rotate_right (Node node){
 }
 
 int get_balance (Node node){
-  return 0;
+  return (get_height(node->left)+1)-(get_height(node->right)+1);
 }
 
 void print_postorder (Node node){
@@ -74,5 +79,9 @@ void print_postorder (Node node){
 }
 
 void unbalanced_insert (Node root, int key){
-
+  if(root==0)
+  {
+    root->key=key;
+  }
+  
 }

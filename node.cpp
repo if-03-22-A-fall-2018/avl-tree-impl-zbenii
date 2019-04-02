@@ -40,6 +40,6 @@ Node create_node (int key){
   newNode->key=key;
   newNode->left=0;
   newNode->right=0;
-  newNode->height=0;
+  newNode->height=1;
   return newNode;
 }
