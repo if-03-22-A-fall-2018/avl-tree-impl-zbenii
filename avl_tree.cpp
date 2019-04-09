@@ -81,7 +81,15 @@ void print_postorder (Node node){
 void unbalanced_insert (Node root, int key){
   if(root==0)
   {
-    root->key=key;
+    root=create_node(key);
   }
-  
+  else if(key<root->key)
+  {
+    unbalanced_insert(root->left,key);
+  }
+  else if(key>root->key)
+  {
+    unbalanced_insert(root->right,key);
+  }
+
 }

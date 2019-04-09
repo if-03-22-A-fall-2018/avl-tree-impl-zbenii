@@ -1,11 +1,5 @@
 #include "node.h"
 #include <stdlib.h>
-struct node{
-  int key;
-  int height;
-  struct node* left;
-  struct node* right;
-};
 
 int get_key (Node node){
   return node->key;
